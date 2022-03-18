@@ -21,12 +21,13 @@ export interface CategoryService extends Service<Category, string, CategoryFilte
 export const categoryModel: Attributes = {
   id: {
     key: true,
-    length: 40
+    length: 40,
+    q:true,
   },
   categoryName: {
     required: true,
     length: 300,
-  
+    q:true
   },
   
   

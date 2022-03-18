@@ -18,7 +18,7 @@ export class CategoryManager extends Manager<Category, string, CategoryFilter> i
 //  }
 }
 export function useCategoryService(db: DB, mapper?: TemplateMap): CategoryService {
-  const query = useQuery('category', mapper, categoryModel, true);
+  const query = useQuery('categories', mapper, categoryModel, true);
   const builder = new SearchBuilder<Category, CategoryFilter>(db.query, 'categories', categoryModel, db.driver,query);
   const repository = new SqlCategoryRepositoy(db);
   return new CategoryManager(builder.search, repository);

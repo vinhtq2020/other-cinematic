@@ -7,6 +7,8 @@ import http from 'http';
 import { createLogger } from 'logger-core';
 import {Pool} from 'pg';
 import { PoolManager } from 'pg-extension';
+// import { createPool } from 'mysql';
+// import { PoolManager } from 'mysql-core';
 import { log } from 'query-core';
 import { buildTemplates, trim } from 'query-mappers';
 import { config, env } from './config';
@@ -23,9 +25,13 @@ app.use(allow(conf.allow), json(), cookieParser(), middleware.log);
 
 const templates = loadTemplates(conf.template, buildTemplates, trim, ['./src/query.xml']);
 const pool = new Pool(config.db);
+// const pool = createPool(config.db);
 const db = log(new PoolManager(pool), conf.log.db, logger, 'sql');
 const ctx = useContext(db, logger, middleware, conf, templates);
 route(app, ctx, conf.secure);
 http.createServer(app).listen(conf.port, () => {
   console.log('Start server at port ' + conf.port);
 });
+
+
+

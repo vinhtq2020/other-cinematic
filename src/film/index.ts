@@ -15,7 +15,7 @@ export class FilmManager extends Manager<Film, string, FilmFilter> implements Fi
  
 }
 export function useFilmService(db: DB, mapper?: TemplateMap): FilmService {
-  const query = useQuery('film', mapper,filmModel,true);
+  const query = useQuery('films', mapper,filmModel,true);
   const builder = new SearchBuilder<Film, FilmFilter>(db.query, 'films', filmModel, db.driver, query);
   const repository = new SqlFilmRepositoy(db);
   
