@@ -3,22 +3,33 @@ drop database backoffice;
 use backoffice;
 
 create table films(
-id character varying(40) primary key,
+filmid character varying(40) primary key,
 title character varying(300) not null,
 description character varying(300),
 imageurl character varying(300),
 trailerurl character varying(300),
-categories character varying[]
+categories character varying[],
+  status char(1) not null,
+createdby character varying(40),
+  createdat timestamp,
+  updatedby character varying(40),
+  updatedat timestamp
 );
 -- drop table films
 create table categories(
-id character varying(40) primary key,
-categoryname character varying(300) not null
+categoryid character varying(40) primary key,
+categoryname character varying(300) not null,
+  status char(1) not null,
+
+createdby varying(40),
+  createdat timestamp,
+  updatedby varying(40),
+  updatedat timestamp
 );
 
-insert into categories(id, categoryname) values('0001','category 1');
+insert into categories(categoryid, categoryname) values('0001','category 1');
 insert into categories values('0002','category 2');
-insert into films(id,title,description, imageurl, trailerurl, categories) 
+insert into films(filmid,title,description, imageurl, trailerurl, categories) 
 values(
 	'000001',
 	'godzilla',

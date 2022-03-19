@@ -7,10 +7,10 @@ export interface FilmFilter extends Filter {
   description?: string;
   imageUrl?: string;
   trailerUrl?:string;
-  categories?: string[];
+  status?:string;
 }
 export interface Film {
-  id: string;
+  filmId: string;
   title: string;
   description?: string;
   imageUrl?: string;
@@ -37,7 +37,7 @@ export interface FilmService extends Service<Film, string, FilmFilter> {
 // }
 
 export const filmModel: Attributes = {
-  id: {
+  filmId: {
     key: true,
     length: 40
   },
@@ -58,14 +58,18 @@ export const filmModel: Attributes = {
   categories: {
     type: 'primitives',
   },
-  // createdBy: {},
-  // createdAt: {
-  //   type: 'datetime'
-  // },
-  // updatedBy: {},
-  // updatedAt: {
-  //   type: 'datetime'
-  // },
+  status:{
+    match:"equal",
+    length:1
+  },
+  createdBy: {},
+  createdAt: {
+    type: 'datetime'
+  },
+  updatedBy: {},
+  updatedAt: {
+    type: 'datetime'
+  },
   
 };
 
