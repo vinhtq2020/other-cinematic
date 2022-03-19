@@ -12,6 +12,7 @@ export interface FilmFilter extends Filter {
 export interface Film {
   filmId: string;
   title: string;
+  status:string;
   description?: string;
   imageUrl?: string;
   trailerUrl?: string;
@@ -23,18 +24,6 @@ export interface FilmRepository extends Repository<Film, string>{
 export interface FilmService extends Service<Film, string, FilmFilter> {
   
 }
-// const filmCategoryModel: Attributes = {
-//   filmId: {
-//     key: true
-//   },
-//   userId: {
-//     key: true
-//   },
-// };
-// export interface FilmCategory{
-//   filmId?:string;
-//   roleId:string;
-// }
 
 export const filmModel: Attributes = {
   filmId: {
@@ -44,7 +33,8 @@ export const filmModel: Attributes = {
   title: {
     required: true,
     length: 300,
-  
+    q:true
+
   },
   description: {
     length: 300,

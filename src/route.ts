@@ -51,6 +51,8 @@ app.post('/categories',checkCategory,ctx.category.create);
 app.get('/categories/search',checkCategory,ctx.category.search);
 app.get('/categories/:id',ctx.category.load);
 app.put('/categories/:id',checkCategory,ctx.category.update);
+app.patch('/categories/:id',checkCategory,ctx.category.patch);
+
 app.delete('/categories/:id',checkCategory,ctx.category.delete);
 
 
@@ -59,6 +61,7 @@ app.post('/films',checkFilm,ctx.film.create);
 app.get('/films/search',checkFilm,ctx.film.search);
 app.get('/films/:id',ctx.film.load);
 app.put('/films/:id',checkFilm,ctx.film.update);
+app.patch('/films/:id',checkFilm,ctx.film.patch );
 app.delete('/films/:id',checkFilm,ctx.film.delete);
 
 
