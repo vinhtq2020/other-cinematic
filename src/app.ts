@@ -26,7 +26,7 @@ app.use(allow(conf.allow), json(), cookieParser(), middleware.log);
 const templates = loadTemplates(conf.template, buildTemplates, trim, ['./src/query.xml']);
 const pool = new Pool(config.db);
 // const pool = createPool(config.db);
-const db = log(new PoolManager(pool), conf.log.db, logger, 'sql');
+const db = log(new PoolManager(pool), conf.log.db, logger, 'postgres');
 const ctx = useContext(db, logger, middleware, conf, templates);
 route(app, ctx, conf.secure);
 http.createServer(app).listen(conf.port, () => {

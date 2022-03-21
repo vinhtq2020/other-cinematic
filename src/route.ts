@@ -59,6 +59,7 @@ app.delete('/categories/:id',checkCategory,ctx.category.delete);
 app.get('/films', ctx.film.all);
 app.post('/films',checkFilm,ctx.film.create);
 app.get('/films/search',checkFilm,ctx.film.search);
+app.post('/films/search',checkFilm,ctx.film.search);
 app.get('/films/:id',ctx.film.load);
 app.put('/films/:id',checkFilm,ctx.film.update);
 app.patch('/films/:id',checkFilm,ctx.film.patch );

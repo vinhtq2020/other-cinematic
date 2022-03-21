@@ -1,4 +1,4 @@
-import { Attributes, Filter, Service } from 'onecore';
+import { Attributes, Filter, Search, Service } from 'onecore';
 import { Repository } from 'query-core';
 
 export interface FilmFilter extends Filter {
@@ -6,25 +6,22 @@ export interface FilmFilter extends Filter {
   title?: string;
   description?: string;
   imageUrl?: string;
-  trailerUrl?:string;
-  status?:string;
+  trailerUrl?: string;
+  status?: string;
 }
 export interface Film {
   filmId: string;
   title: string;
-  status:string;
+  status: string;
   description?: string;
   imageUrl?: string;
   trailerUrl?: string;
   categories?: string[];
 }
-export interface FilmRepository extends Repository<Film, string>{
-
+export interface FilmRepository extends Repository<Film, string> {
 }
 export interface FilmService extends Service<Film, string, FilmFilter> {
-  
 }
-
 export const filmModel: Attributes = {
   filmId: {
     key: true,
@@ -33,7 +30,7 @@ export const filmModel: Attributes = {
   title: {
     required: true,
     length: 300,
-    q:true
+    q: true
 
   },
   description: {
@@ -48,9 +45,9 @@ export const filmModel: Attributes = {
   categories: {
     type: 'primitives',
   },
-  status:{
-    match:"equal",
-    length:1
+  status: {
+    match: "equal",
+    length: 1
   },
   createdBy: {},
   createdAt: {
@@ -60,6 +57,6 @@ export const filmModel: Attributes = {
   updatedAt: {
     type: 'datetime'
   },
-  
+
 };
 

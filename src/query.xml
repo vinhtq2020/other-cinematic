@@ -69,6 +69,9 @@
     <if test = "trailerUrl != null">
     trailerUrl like #{trailerUrl} and
     </if>
+    <if test="categories != null" array="skip">
+      categories && #{categories} and
+    </if>
     <if test="q != null">
       (title like #{q} or description like #{q} or imageUrl like #{q} or trailerUrl like #{trailerUrl}) and
     </if>
